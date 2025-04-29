@@ -2,11 +2,22 @@ import Attempt from "./Attempt";
 import './../styles/GameBox.css'
 import { useEffect, useState } from "react";
 
-export default function GameBox({ word }) {
+export default function GameBox({ word, words, setWord }) {
 
     const [currentGuess, setCurrentGuess] = useState('');
     const [guesses, setGuesses] = useState(new Array(6).fill(null));
     const [submittedList, setSubmittedList] = useState(new Array(6).fill(null).map(() => ({ word: "", submitted: false })));
+    
+    function restartGame() {
+
+        const word = words[Math.floor(Math.random() * words.length)].word
+        setWord(word)
+        console.log(word)
+        setGuesses(new Array(6).fill(null))
+        setCurrentGuess('')
+        setSubmittedList(new Array(6).fill(null).map(() => ({ word: "", submitted: false })))
+      
+    }
 
     useEffect(() => {
 
@@ -75,11 +86,14 @@ export default function GameBox({ word }) {
                     word = {word}
                     submitted = {submittedList[i].submitted}
                     />)
-
+                    
                     
                 
                 })}
-
+                <button
+                className="restart-button"
+                onClick={restartGame}
+                >Restart</button>
         </div>
 
     )

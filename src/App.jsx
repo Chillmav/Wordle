@@ -8,6 +8,7 @@ function App() {
   const [words, setWords] = useState([]);
   const [word, setWord] = useState('');
 
+  
   async function fetchWords(uri) {
     const res = await fetch(uri);
     const words = await res.json();
@@ -24,7 +25,7 @@ function App() {
       const word = data[Math.floor(Math.random() * data.length)].word
       setWord(word)
       console.log(word)
-
+    
     }
 
     loadData();
@@ -39,6 +40,8 @@ function App() {
       className='Title'>Wordle</p>
       <GameBox
       word={word}
+      setWord={setWord}
+      words={words}
        />
       
     </div>
