@@ -1,7 +1,5 @@
-import Attempt from "./Attempt";
-import './../styles/GameBox.css'
 import { useEffect, useState } from "react";
-
+import Attempt from './Attempt';
 export default function GameBox({ word, words, setWord }) {
 
     const [currentGuess, setCurrentGuess] = useState('');
@@ -38,7 +36,9 @@ export default function GameBox({ word, words, setWord }) {
                 });
                 if (word === currentGuess) {
                     console.log('Game over');
-                    
+                    setTimeout(() => {
+                        restartGame();
+                    }, 1000)
                     return;
                 }
 
@@ -72,7 +72,7 @@ export default function GameBox({ word, words, setWord }) {
 
     return (
 
-        <div className="game-box">
+        <div className="flex flex-col items-center justify-center mt-[20px] space-y-[15px] ">
 
             {guesses.map((guess, i) => {
 
@@ -91,7 +91,7 @@ export default function GameBox({ word, words, setWord }) {
                 
                 })}
                 <button
-                className="restart-button"
+                className="bg-orange-400 my-8 px-10 py-3 rounded-full cursor-pointer font-mono text-2xl"
                 onClick={restartGame}
                 >Restart</button>
         </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import './App.css'
 import GameBox from '../Components/GameBox';
+
 const uri = 'https://api.datamuse.com/words?sp=?????'
 
 function App() {
@@ -35,9 +35,9 @@ function App() {
 
   return (
     <div
-    className='main'>
+    className='flex flex-col items-center justify-center'>
       <p
-      className='Title'>Wordle</p>
+      className='font-semibold text-[45px] font-mono my-[10px] mx-0'>Wordle</p>
       <GameBox
       word={word}
       setWord={setWord}
